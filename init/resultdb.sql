@@ -89,16 +89,16 @@ $$ LANGUAGE plpgsql IMMUTABLE
 ;
 
 --
--- Process the output from pg_current_xlog_location() or
--- pg_current_xlog_insert_location() and return a WAL Logical Serial Number
+-- Process the output from pg_current_wal_lsn() or
+-- pg_current_wal_insert_lsn() and return a WAL Logical Serial Number
 -- from that information.  That represents an always incrementing offset
 -- within the WAL stream, proportional to how much data has been written
 -- there.  The input will look like '2/13BDE690'.
 --
 -- Sample use:
 --
--- SELECT wal_lsn(pg_current_xlog_location());
--- SELECT wal_lsn(pg_current_xlog_insert_location());
+-- SELECT wal_lsn(pg_current_wal_lsn());
+-- SELECT wal_lsn(pg_current_wal_insert_lsn());
 --
 -- There's no error checking here.  If you input a hex string without a "/"
 -- in it, the function will process it without complaint, returning a large
